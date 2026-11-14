@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Translator</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap"
+			rel="stylesheet"
+			media="print"
+			onload="this.media = 'all'"
+		/>
+		<link rel="stylesheet" href="../styles/neu.css" />
+		<link rel="stylesheet" href="popup.css" />
+	</head>
+	<body>
+		<main class="app">
+			<header class="bar">
+				<div class="logo" aria-hidden="true">
+					<img src="../assets/icon.png" alt="Translator icon" draggable="false" />
+				</div>
+				<div class="title">
+					<strong>Translator</strong>
+					<span id="detectBadge" class="detect">Detected: —</span>
+				</div>
+				<button id="themeBtn" class="neu-btn icon" title="Toggle theme" aria-label="Toggle theme">◐</button>
+				<button id="settingsBtn" class="neu-btn icon" title="Settings" aria-label="Settings">⚙</button>
+			</header>
+
+			<div class="langs">
+				<select id="srcSel" class="neu-btn sel" aria-label="Source language">
+					<option value="auto">Auto detect</option>
+					<option value="en">English</option>
+					<option value="fa">فارسی</option>
+					<option value="fr">Français</option>
+					<option value="de">Deutsch</option>
+					<option value="es">Español</option>
+					<option value="ar">العربية</option>
+					<option value="tr">Türkçe</option>
+				</select>
+				<button id="swapBtn" class="neu-btn icon" title="Swap languages" aria-label="Swap languages">⇄</button>
+				<select id="tgtSel" class="neu-btn sel" aria-label="Target language">
+					<option value="fa">فارسی</option>
+					<option value="en">English</option>
+					<option value="fr">Français</option>
+					<option value="de">Deutsch</option>
+					<option value="es">Español</option>
+					<option value="ar">العربية</option>
+					<option value="tr">Türkçe</option>
+				</select>
+			</div>
+
+			<textarea
+				id="input"
+				class="neu-inset"
+				rows="3"
+				placeholder="Type English or فارسی…"
+				dir="auto"
+				tabindex="0"
+				autofocus
+			></textarea>
+
+			<div class="actions">
+				<button id="inSpeak" class="neu-btn icon" title="Hear input" aria-label="Hear input">🔊</button>
+				<button id="goBtn" class="neu-btn primary">Translate</button>
+				<button id="clearBtn" class="neu-btn">Clear</button>
+			</div>
+
+			<section id="result" class="neu-raised result" aria-live="polite" hidden>
+				<div id="skeleton" class="skel" hidden><i></i><i></i><i class="short"></i></div>
+				<div id="errBox" class="err" hidden></div>
+				<div id="outWrap" hidden>
+					<div class="out-head">
+						<button id="speakBtn" class="neu-btn icon sm" title="Listen" aria-label="Listen">🔊</button>
+						<button id="copyBtn" class="neu-btn icon sm" title="Copy" aria-label="Copy">⧉</button>
+					</div>
+					<p id="mainOut" class="main" dir="auto"></p>
+				</div>
+			</section>
+		</main>
+		<script type="module" src="popup.js"></script>
+	</body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Translator — Settings</title>
+		<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet" />
+		<link rel="stylesheet" href="../styles/neu.css" />
+		<link rel="stylesheet" href="options.css" />
+	</head>
+	<body>
+		<main class="wrap">
+			<header class="bar">
+				<div class="logo" aria-hidden="true">
+					<img src="../assets/icon.png" alt="Translator icon" />
+				</div>
+				<h1>Settings</h1>
+			</header>
+
+			<section class="neu-raised card">
+				<label>
+					Gemini API key
+					<input
+						id="googleKey"
+						class="neu-inset field"
+						type="text"
+						placeholder="Enter your API key…"
+						dir="ltr"
+						autocomplete="off"
+					/>
+				</label>
+
+				<label>
+					Theme
+					<select id="theme" class="neu-btn sel-field">
+						<option value="system">Follow system</option>
+						<option value="light">Light</option>
+						<option value="dark">Dark</option>
+					</select>
+				</label>
+
+				<button id="save" class="neu-btn primary big">Save</button>
+			</section>
+
+			<p class="hint">
+				Shortcut: <kbd>Ctrl+Shift+T</kbd> (Mac: <kbd>⌘+Shift+T</kbd>) opens the popup. Change it at
+				<span dir="ltr">chrome://extensions/shortcuts</span>.
+			</p>
+		</main>
+		<script type="module" src="options.js"></script>
+	</body>
+</html>

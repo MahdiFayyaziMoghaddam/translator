@@ -1,0 +1,167 @@
+/* Shared neomorphism design tokens + primitives.
+   Imported by popup.css and options.css via @import.
+   Theme: light-dark() follows the OS unless :root[data-theme] overrides color-scheme. */
+
+:root {
+	color-scheme: light dark;
+	--bg: light-dark(#e0e5ec, #1a202c);
+	--bg-soft: light-dark(#e6ebf2, #202836);
+	--text: light-dark(#2d3748, #e2e8f0);
+	--text-muted: light-dark(#718096, #a0aec0);
+	--accent: light-dark(#a8d5e5, #f9e79f); /* light = blue, dark = soft yellow */
+	--accent-2: #a8d5e5;
+	--accent-soft: light-dark(rgba(168, 213, 229, 0.45), rgba(249, 231, 159, 0.22));
+	--accent-soft-2: light-dark(rgba(168, 213, 229, 0.4), rgba(168, 213, 229, 0.22));
+	--accent-text: light-dark(#1e6e8c, #f9e79f);
+	--secondary-text: light-dark(#1e6e8c, #a8d5e5);
+	--on-accent: light-dark(#123c50, #4a3f05);
+	--card: light-dark(#e0e5ec, #1a202c);
+	--selection-bg: light-dark(#1e6e8c, #4a3f05);
+	--scrollbar-bg: light-dark(#a8d5e5, #4a3f05);
+	--scrollbar-thumb: light-dark(#1e6e8c, #f9e79f);
+	--radius: 8px;
+	--radius-sm: 6px;
+	--space-1: 4px;
+	--space-2: 8px;
+	--space-3: 12px;
+	--space-4: 16px;
+	--space-5: 20px;
+	/* neumorphic shadows: dark + light */
+	--shadow-dark: light-dark(rgba(163, 177, 198, 0.65), rgba(0, 0, 0, 0.55));
+	--shadow-light: light-dark(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.06));
+	--raised: 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light);
+	--raised-sm: 3px 3px 7px var(--shadow-dark), -3px -3px 7px var(--shadow-light);
+	--inset: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
+	--inset-sm: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light);
+	--font-fa: "Vazirmatn", "Shabnam", "Segoe UI", Tahoma, sans-serif;
+	--transition: 0.18s ease;
+}
+
+/* Manual override wins over system */
+:root[data-theme="dark"] {
+	color-scheme: dark;
+}
+:root[data-theme="light"] {
+	color-scheme: light;
+}
+
+* {
+	box-sizing: border-box;
+	&::selection {
+		background-color: var(--selection-bg);
+		color: white;
+	}
+	&::-webkit-scrollbar {
+		width: 7px;
+		background-color: var(--scrollbar-bg);
+	}
+	&::-webkit-scrollbar-thumb {
+		background-color: var(--scrollbar-thumb);
+		cursor: pointer;
+	}
+}
+
+.neu-raised {
+	background: var(--bg);
+	border-radius: var(--radius);
+	box-shadow: var(--raised);
+}
+.neu-inset {
+	background: var(--bg);
+	border-radius: var(--radius);
+	box-shadow: var(--inset);
+}
+.neu-btn {
+	border: 0;
+	cursor: pointer;
+	font-family: var(--font-fa);
+	background: var(--bg);
+	color: var(--text);
+	border-radius: var(--radius);
+	box-shadow: var(--raised-sm);
+	user-select: none;
+	transition:
+		box-shadow var(--transition),
+		transform var(--transition);
+}
+.neu-btn:hover {
+	transform: translateY(-1px);
+}
+.neu-btn:active {
+	box-shadow: var(--inset-sm);
+	transform: translateY(0);
+}
+.neu-btn.primary {
+	background: var(--accent);
+	color: var(--on-accent);
+	box-shadow:
+		3px 3px 7px var(--shadow-dark),
+		-3px -3px 7px var(--shadow-light);
+}
+
+/* Customizable select list (Chromium appearance: base-select, ~Chrome 135+).
+   Unsupported browsers keep the native list; enhancements degrade gracefully. */
+select {
+	appearance: base-select;
+	cursor: pointer;
+	font-family: var(--font-fa);
+	color: var(--text);
+}
+
+select:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 2px;
+}
+
+select::picker-icon {
+	color: var(--text-muted);
+	transition:
+		transform var(--transition),
+		color var(--transition);
+}
+
+select:open::picker-icon {
+	transform: rotate(180deg);
+}
+
+::picker(select) {
+	appearance: base-select;
+	background: var(--bg-soft);
+	color: var(--text);
+	border: 0;
+	border-radius: var(--radius);
+	box-shadow: var(--inset);
+	padding: 5px;
+	overflow: auto;
+	max-block-size: min(60vh, 20rem);
+	scrollbar-width: none;
+}
+
+::picker(select)::-webkit-scrollbar {
+	display: none;
+	width: 0;
+	height: 0;
+}
+
+option {
+	font-family: var(--font-fa);
+	font-size: 13px;
+	color: var(--text);
+	background: transparent;
+	border-radius: var(--radius-sm);
+	padding: 8px 10px;
+	cursor: pointer;
+}
+
+option:hover,
+option:focus-visible {
+	background: var(--accent-soft);
+}
+
+option:checked {
+	background: var(--accent-soft-2);
+}
+
+option::checkmark {
+	color: var(--accent-text);
+}
